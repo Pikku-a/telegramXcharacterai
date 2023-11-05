@@ -18,13 +18,13 @@ const express = require("express");
 const compression = require("compression");
 const serveStatic = require("serve-static");
 
-const pkg = require("./package.json");
+/*const pkg = require("./package.json");
 const mainChat = require("./intents/Main_Chat.json");
 const supportChat = require("./intents/support.json");
 const wikipediaChat = require("./intents/wikipedia.json");
 const welcomeChat = require("./intents/Default_Welcome.json");
 const fallbackChat = require("./intents/Default_Fallback.json");
-const unitConverterChat = require("./intents/unit_converter.json");
+const unitConverterChat = require("./intents/unit_converter.json");*/
 
 dotenv.config();
 

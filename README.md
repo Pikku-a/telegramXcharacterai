@@ -1,31 +1,22 @@
 <div id="top"></div>
 
 <div align="center">
-    <p>A Simple & Powerful chatbot in JavaScript.</p>
     <img src="public/src/images/profile-pic.avif" style="border-radius:50%;width:100px;height:auto;">
-    <h3>Assistentti</h3>
-	<p>A Telegram bot virtual assistant. Tämä versio on suomenkielinen assistentti.</p>
+    <h3>CharacterAI Telegram bot</h3>
 </div>
 
 
 ## About 
 
-This is a simple and Powerful chatbot in nodejs. It's also linked to wikipedia's API and very easy to customize with JSON.
-Originally copied from: https://github.com/devXprite/javascript-chatbot
-I also linked it to CharacterAI and made it a telegram bot.
-
-This branch (assistentti) is a Telegram bot virtual assistant. It speaks primarly Finnish, but it understands english too (and probably other languages, but some things don't work in all of them).
-
-Branch *pikkua-tan* is a customer service bot I made to answer questions related to stuff I make. However, it isn't good enough yet.
+With this Telegram bot you can talk to CharacterAI characters. Self hosted.
 
 ## To do
 - Simplify the code and remove unnecessary things
 - Add better comments
-- Add different language version of the json files
 - Automatically remove history sometimes, or delete one entry when it's over a certain number
 - Improve this readme
-- Limit who can use the bot
-- Add possibility to connect it to other AI than characterAI
+- Limit who can use the bot?
+- Make it possible to choose the character while using the bot
 - Change {{char}} to process.env.BOT_NAME?
 
 ## Notes
@@ -50,7 +41,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/Pikku-a/assistentti
+   git clone https://github.com/Pikku-a/telegramXcharacterai
    ```
 2. Install NPM packages
    ```sh
@@ -64,6 +55,7 @@ To get a local copy up and running follow these simple steps.
    BUG_REPORT_URL="Your URL"
    TELEGRAM_TOKEN="telegram bot token from @botfather"
    CHARACTERAI_ID="character ai id that you can get from the last part of the url when in the chat"
+   CHARACTERAI_ACCESSTOKEN=""
    ```
 4. Start Server
    ```sh
@@ -96,8 +88,6 @@ Click this button to configure your Project and deploy it to Vercel.
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FdevXprite%2Fjavascript-chatbot)
 
 ## Credit
-
-Some chat intents were taken from **Dialogflow's [Small talk](https://dialogflow.cloud.google.com/#/agent/small-talk-bfie/intents)**.
 
 I built this on top of this: https://github.com/devXprite/javascript-chatbot
 
