@@ -15,7 +15,7 @@ const axios = require("axios");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const express = require("express");
-const compression = require("compression");
+//const compression = require("compression");
 const serveStatic = require("serve-static");
 
 /*const pkg = require("./package.json");
@@ -80,14 +80,12 @@ bot.command("start", (ctx) => ctx.reply("Hei"));
 // Register listeners to handle messages
 //bot.on("message:text", (ctx) => ctx.reply("Echo: " + ctx.message.text));
 
-bot.on("message:text", async (ctx) => { //Integrate this to the one below (or the other way around)?
+bot.on("message:text", async (ctx) => {
   // the message object
   const message = ctx.message; //req.body.message || req.body.edited_message;
   const messageText = ctx.message.text; //req.body.message || req.body.edited_message;
   //console.log(message); //This shows it as json? cool
 
-	
-	//From here on this is basically a copy of what is in the SEND ANSWER section. They could be connected if I just knew how.
   let isFallback = false;
   let responseText = null;
   let rating = 0;
@@ -98,58 +96,50 @@ bot.on("message:text", async (ctx) => { //Integrate this to the one below (or th
 	let query = decodeURIComponent(messageText).replace(/\s+/g, " ").trim() || "Hello";
 	const humanInput = lowerCase(query.replace(/(\?|\.|!)$/gim, ""));
 	//console.log("query: "+query);
-	let queryHistory = "";
-	//localStorage.setItem("queryHistory",null);
-	if (localStorage.getItem("queryHistory") != null) {
-		queryHistory = localStorage.getItem("queryHistory");
+	//HISTORY
+	let historyEnabled = false;
+	if (historyEnabled == true) {
+		let queryHistory = "";
+		//localStorage.setItem("queryHistory",null);
+		if (localStorage.getItem("queryHistory") != null) {
+			queryHistory = localStorage.getItem("queryHistory");
+		}
+		//If long history, delete oldest line
+		if (queryHistory.split(/\r\n|\r|\n/).length > 20) {
+			queryHistory.split("\n").slice(2).join("\n"); //This doesn't seem to work...
+		}
+		//localStorage.setItem("queryHistory",queryHistory+"\nUser: "+query);
+		//console.log("query history: "+queryHistory);
 	}
-	//If long history, delete oldest line
-	if (queryHistory.split(/\r\n|\r|\n/).length > 20) {
-		queryHistory.split("\n").slice(2).join("\n"); //This doesn't seem to work...
-	}
-	//localStorage.setItem("queryHistory",queryHistory+"\nUser: "+query);
-	//console.log("query history: "+queryHistory);
-	
 	//action = "main_chat";
 
-	//If no answer from basic chatbot, get answer from CharacterAI.
+	//Get answer from CharacterAI.
 	//answerFromCharacterai = true;
 	const CharacterAI = require('node_characterai');
 	const characterAI = new CharacterAI();
 	await characterAI.authenticateWithToken(process.env.CHARACTERAI_ACCESSTOKEN);// or authenticateAsGuest();
-	console.log("Retrieving answer from CharacterAI...");
-
 	const characterId = process.env.CHARACTERAI_ID;
-	//Add history to query here
-	if (queryHistory!=null) {
-		queryWithHistory = "Chat history: ["+queryHistory+"]\n"+query;
+	console.log("Retrieving answer from CharacterAI...");
+	
+	//Chat histroy
+	if (historyEnabled == true) {
+		//Add history to query here
+		if (queryHistory!=null) {
+			queryWithHistory = "Chat history: ["+queryHistory+"]\n"+query;
+		}
+		console.log("query: "+queryWithHistory);
 	}
-	console.log("query: "+queryWithHistory);
-
+	
 	const chat = await characterAI.createOrContinueChat(characterId);
-	const response = await chat.sendAndAwaitResponse(query, true); //queryWithHistory
-
-	//localStorage.setItem("queryHistory",queryHistory+"\n{{user}}: "+query+"\n{{char}}: "+response.text);//Add response to history
-
-	//console.log(response.text);
+	const response = await chat.sendAndAwaitResponse(query, true); //or queryWithHistory
+	
 	// use response.text to use it in a string.
 	responseText = response.text;
 	
-	/*if (answerFromCharacterai == false) {
-		if (responseText == null) {
-		  responseText = _.sample(fallbackChat);
-		  isFallback = true;
-		} else if (action != "wikipedia") {
-		  responseText = responseText
-			.replace(/(\[BOT_NAME\])/g, botName)
-			.replace(/(\[DEVELOPER_NAME\])/g, developerName)
-			.replace(/(\[DEVELOPER_EMAIL\])/g, developerEmail)
-			.replace(/(\[BUG_URL\])/g, bugReportUrl);
-		}
-	}*/
-	
 	//Save to message history
-	localStorage.setItem("queryHistory",queryHistory+"\n{{user}}: "+query+"\n{{char}}: "+responseText);
+	if (histroyEnabled == true) {
+		localStorage.setItem("queryHistory",queryHistory+"\n{{user}}: "+query+"\n{{char}}: "+responseText);
+	}
 	
 	//Send the answer to Telegram
 	//ctx.reply(responseText);
@@ -158,6 +148,15 @@ bot.on("message:text", async (ctx) => { //Integrate this to the one below (or th
 		reply_to_message_id: ctx.msg.message_id,
 	});
 	console.log("Response message sent.");
+
+	/*	if (action != "wikipedia") {
+		  responseText = responseText
+			.replace(/(\[BOT_NAME\])/g, botName)
+			.replace(/(\[DEVELOPER_NAME\])/g, developerName)
+			.replace(/(\[DEVELOPER_EMAIL\])/g, developerEmail)
+			.replace(/(\[BUG_URL\])/g, bugReportUrl);
+		}
+	}*/
 	
 	/*res.json({
 	  responseText,
@@ -207,7 +206,6 @@ bot.catch((err) => {
 
 //Set webhook for handler in Bot API
 //bot.api.setWebhook(process.env.WEBHOOK);
-
 
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));
