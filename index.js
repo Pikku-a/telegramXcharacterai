@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 const fs = require("fs");
 const _ = require("lodash");
-const wiki = require("wikipedia");
-const convert = require("convert-units");
+//const wiki = require("wikipedia");
+//const convert = require("convert-units");
 const { lowerCase } = require("lower-case");
 const { capitalCase } = require("change-case");
 const extractValues = require("extract-values");
@@ -91,8 +91,8 @@ bot.on("message:text", async (ctx) => { //Integrate this to the one below (or th
   let isFallback = false;
   let responseText = null;
   let rating = 0;
-  let action = null;
-  let answerFromCharacterai = false;
+  //let action = null;
+  //let answerFromCharacterai = false;
 
   try {
 	let query = decodeURIComponent(messageText).replace(/\s+/g, " ").trim() || "Hello";
@@ -110,10 +110,10 @@ bot.on("message:text", async (ctx) => { //Integrate this to the one below (or th
 	//localStorage.setItem("queryHistory",queryHistory+"\nUser: "+query);
 	//console.log("query history: "+queryHistory);
 	
-	action = "main_chat";
+	//action = "main_chat";
 
 	//If no answer from basic chatbot, get answer from CharacterAI.
-	answerFromCharacterai = true;
+	//answerFromCharacterai = true;
 	const CharacterAI = require('node_characterai');
 	const characterAI = new CharacterAI();
 	await characterAI.authenticateWithToken(process.env.CHARACTERAI_ACCESSTOKEN);// or authenticateAsGuest();
@@ -209,35 +209,5 @@ bot.catch((err) => {
 //bot.api.setWebhook(process.env.WEBHOOK);
 
 
-
-
-//-----------------------------//
-//Remove at least some of this	|
-//								|
-//								V
-
-/*const notFound = async (req, res) => {
-  try {
-    const pageNotFoundHtml = await fs.readFileSync(
-      path.join(__dirname, "public/404.html"),
-      "utf8",
-    );
-    res.status(404).send(pageNotFoundHtml);
-  } catch (err) {
-    res.status(404).send("Page Not Found!");
-    console.log(err);
-  }
-};*/
-
-
-app.use(cors());
-app.use(compression());
-app.set("json spaces", 4);
-app.use("/api/", morgan("tiny"));
-/*app.get("/api/question", sendAnswer);
-app.get("/api/welcome", sendWelcomeMessage);
-app.get("/api/allQuestions", sendAllQuestions);*/
-app.use(serveStatic(path.join(__dirname, "public")));
-//app.get("*", notFound);
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));
