@@ -15,7 +15,7 @@ const axios = require("axios");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const express = require("express");
-//const compression = require("compression");
+const compression = require("compression");
 const serveStatic = require("serve-static");
 
 /*const pkg = require("./package.json");
@@ -91,7 +91,7 @@ bot.on("message:text", async (ctx) => {
   let rating = 0;
   //let action = null;
   //let answerFromCharacterai = false;
-
+  
   try {
 	let query = decodeURIComponent(messageText).replace(/\s+/g, " ").trim() || "Hello";
 	const humanInput = lowerCase(query.replace(/(\?|\.|!)$/gim, ""));
@@ -137,7 +137,7 @@ bot.on("message:text", async (ctx) => {
 	responseText = response.text;
 	
 	//Save to message history
-	if (histroyEnabled == true) {
+	if (historyEnabled == true) {
 		localStorage.setItem("queryHistory",queryHistory+"\n{{user}}: "+query+"\n{{char}}: "+responseText);
 	}
 	
