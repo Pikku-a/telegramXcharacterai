@@ -1,7 +1,7 @@
 <div id="top"></div>
 
 <div align="center">
-    <img src="public/src/images/profile-pic.avif" style="border-radius:50%;width:100px;height:auto;">
+    <img src="images/profile-pic.avif" style="border-radius:50%;width:100px;height:auto;">
     <h3>CharacterAI Telegram bot</h3>
 </div>
 
@@ -9,6 +9,10 @@
 ## About 
 
 With this Telegram bot you can talk to CharacterAI characters. Self hosted.
+
+## Warning
+
+There is a slight possibility that your CharacterAI account gets banned if you use this. But there is also the option to use it as a Guest, but that has it's own downsides.
 
 ## To do
 - Simplify the code and remove unnecessary things
@@ -18,6 +22,7 @@ With this Telegram bot you can talk to CharacterAI characters. Self hosted.
 - Limit who can use the bot?
 - Make it possible to choose the character while using the bot
 - Change {{char}} to process.env.BOT_NAME?
+- Is there a memory leak?
 
 ## Notes
 

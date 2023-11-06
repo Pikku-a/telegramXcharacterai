@@ -46,7 +46,7 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 const app = express();
 const port = process.env.PORT || 3000;
 //app.use(express.json()); // parse the JSON request body
-//const HttpError = require("http");
+const HttpError = require("http");
 
 //TELEGRAM BOT
 const { Bot, GrammyError } = require("grammy");
