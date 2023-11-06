@@ -15,6 +15,7 @@ With this Telegram bot you can talk to CharacterAI characters. Self hosted.
 There is a slight possibility that your CharacterAI account gets banned if you use this. But there is also the option to use it as a Guest, but that has it's own downsides.
 
 ## To do
+- It seems that characterAI sometimes blocks it, notices it's a bot
 - Simplify the code and remove unnecessary things
 - Add better comments
 - Automatically remove history sometimes, or delete one entry when it's over a certain number
