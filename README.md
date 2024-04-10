@@ -1,5 +1,3 @@
-<div id="top"></div>
-
 <div align="center">
     <img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:100px;height:auto;">
     <h3>CharacterAI Telegram bot</h3>
