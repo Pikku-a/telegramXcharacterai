@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:200px;height:auto;overflow: hidden;">
+    <img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:200px;height:auto;overflow:hidden;background-color:blue;">
     <h3>CharacterAI Telegram bot</h3>
 </div>
 
@@ -11,13 +11,12 @@ With this Telegram bot you can talk to CharacterAI characters. It's self hosted.
 
 This is unnofficial, so there is a slight possibility that your CharacterAI account gets banned if you use this.
 
-## To do
+## Notes
+**To do**
 - Make it possible to login and choose the character using the bot
 - Fix webhooks stuff
 
-## Notes
-
-Helpful links:
+**Helpful links:**
 - https://www.npmjs.com/package/node_characterai
 - https://grammy.dev/
 
@@ -55,7 +54,7 @@ To get a local copy up and running follow these simple steps.
 
 **How to find CharacterAI access token**
 
-- Open the Character.AI website in your browser (https://beta.character.ai)
+- Open the Character.AI website in your browser (https://old.character.ai)
 - Open the developer tools (F12, Ctrl+Shift+I, or Cmd+J)
 - Go to the Storage section and click on Local Storage
 - Look for the char_token key
@@ -74,6 +73,6 @@ But some stuff is left. Like the Vercel stuff. For example, there is this button
   
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FdevXprite%2Fjavascript-chatbot)
 
-I don't know what it does. 'I haven't tried clicking on it, my courage was not enough. Legend says that people who have clicked on it have never returned. Did they succeed? Or fail? Or something worse...
+I don't know what it does. I haven't tried clicking on it, my courage was not enough. Legend says that people who have clicked on it have never returned. Did they succeed? Or fail? Or something worse...
 
 
