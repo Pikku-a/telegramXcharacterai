@@ -1,8 +1,6 @@
 /* eslint-disable max-len */
 const fs = require("fs");
 const _ = require("lodash");
-//const wiki = require("wikipedia");
-//const convert = require("convert-units");
 const { lowerCase } = require("lower-case");
 const { capitalCase } = require("change-case");
 const extractValues = require("extract-values");
@@ -17,38 +15,31 @@ const dotenv = require("dotenv");
 const express = require("express");
 const compression = require("compression");
 const serveStatic = require("serve-static");
+// Not sure if all of the above is necessary
 
-/*const pkg = require("./package.json");
-const mainChat = require("./intents/Main_Chat.json");
-const supportChat = require("./intents/support.json");
-const wikipediaChat = require("./intents/wikipedia.json");
-const welcomeChat = require("./intents/Default_Welcome.json");
-const fallbackChat = require("./intents/Default_Fallback.json");
-const unitConverterChat = require("./intents/unit_converter.json");*/
+//const pkg = require("./package.json");
 
 dotenv.config();
 
-const standardRating = 0.6;
-const botName = process.env.BOT_NAME || pkg.name;
-const developerName = process.env.DEVELOPER_NAME || pkg.author.name;
-const developerEmail = process.env.DEVELOPER_EMAIL || pkg.author.email;
-const bugReportUrl = process.env.DEVELOPER_NAME || pkg.bugs.url;
+/*const botName = process.env.BOT_NAME;// || pkg.name;
+const developerName = process.env.DEVELOPER_NAME;// || pkg.author.name;
+const developerEmail = process.env.DEVELOPER_EMAIL;// || pkg.author.email;
+const bugReportUrl = process.env.BUG_REPORT_URL;// || pkg.bugs.url;*/
 
-//LOCALSTORAGE
+// LOCALSTORAGE
 if (typeof localStorage === "undefined" || localStorage === null) {
   var LocalStorage = require('node-localstorage').LocalStorage;
   localStorage = new LocalStorage('./scratch');
   localStorage.clear();
 }
 
-
-//EXPRESS
+// EXPRESS
 const app = express();
 const port = process.env.PORT || 3000;
 //app.use(express.json()); // parse the JSON request body
 const HttpError = require("http");
 
-//TELEGRAM BOT
+// TELEGRAM BOT
 const { Bot, GrammyError } = require("grammy");
 //const { Bot, webhookCallback } = require("grammy");
 const { Agent } = require("https");
@@ -74,7 +65,7 @@ const bot = new Bot(process.env.TELEGRAM_TOKEN);
   },
 });*/
 
-
+// Greeting
 bot.command("start", (ctx) => ctx.reply("Hei"));
 
 // Register listeners to handle messages
@@ -90,13 +81,12 @@ bot.on("message:text", async (ctx) => {
   let responseText = null;
   let rating = 0;
   //let action = null;
-  //let answerFromCharacterai = false;
   
   try {
 	let query = decodeURIComponent(messageText).replace(/\s+/g, " ").trim() || "Hello";
 	const humanInput = lowerCase(query.replace(/(\?|\.|!)$/gim, ""));
 	//console.log("query: "+query);
-	//HISTORY
+	// HISTORY
 	let historyEnabled = false;
 	if (historyEnabled == true) {
 		let queryHistory = "";
@@ -104,7 +94,7 @@ bot.on("message:text", async (ctx) => {
 		if (localStorage.getItem("queryHistory") != null) {
 			queryHistory = localStorage.getItem("queryHistory");
 		}
-		//If long history, delete oldest line
+		// If long history, delete oldest line
 		if (queryHistory.split(/\r\n|\r|\n/).length > 20) {
 			queryHistory.split("\n").slice(2).join("\n"); //This doesn't seem to work...
 		}
@@ -113,17 +103,16 @@ bot.on("message:text", async (ctx) => {
 	}
 	//action = "main_chat";
 
-	//Get answer from CharacterAI.
-	//answerFromCharacterai = true;
+	// Get answer from CharacterAI.
 	const CharacterAI = require('node_characterai');
 	const characterAI = new CharacterAI();
 	await characterAI.authenticateWithToken(process.env.CHARACTERAI_ACCESSTOKEN);// or authenticateAsGuest();
 	const characterId = process.env.CHARACTERAI_ID;
 	console.log("Retrieving answer from CharacterAI...");
 	
-	//Chat histroy
+	// Chat histroy
 	if (historyEnabled == true) {
-		//Add history to query here
+		// Add history to query here
 		if (queryHistory!=null) {
 			queryWithHistory = "Chat history: ["+queryHistory+"]\n"+query;
 		}
@@ -136,12 +125,12 @@ bot.on("message:text", async (ctx) => {
 	// use response.text to use it in a string.
 	responseText = response.text;
 	
-	//Save to message history
+	// Save to message history
 	if (historyEnabled == true) {
 		localStorage.setItem("queryHistory",queryHistory+"\n{{user}}: "+query+"\n{{char}}: "+responseText);
 	}
 	
-	//Send the answer to Telegram
+	// Send the answer to Telegram
 	//ctx.reply(responseText);
 	ctx.reply(responseText, {
 		// `reply_to_message_id` specifies the actual reply feature.
@@ -179,7 +168,7 @@ bot.on("message:text", async (ctx) => {
 // Start the bot (using long polling)
 bot.start();
 
-//Telegram bot error handling
+// Telegram bot error handling
 bot.catch((err) => {
   const ctx = err.ctx;
   console.error(`Error while handling update ${ctx.update.update_id}:`);
@@ -194,8 +183,8 @@ bot.catch((err) => {
 });
 
 
-//IF USING WEBHOOKS
-//Register a handler for the bot
+// IF USING WEBHOOKS - Couldn't get this working
+// Register a handler for the bot
 //app.post("/webhook", webhookCallback(bot, 'express'));
 
 //?
@@ -204,7 +193,7 @@ bot.catch((err) => {
     ...
 });*/
 
-//Set webhook for handler in Bot API
+// Set webhook for handler in Bot API
 //bot.api.setWebhook(process.env.WEBHOOK);
 
 
