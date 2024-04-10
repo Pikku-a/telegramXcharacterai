@@ -1,7 +1,7 @@
 <html>
 	<body>
 		<div align="center">
-			<img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:200px;height:auto;overflow:hidden;background-color:blue;">
+			<img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:200px;height:auto;border-collapse:separate;perspective:1px;">
 			<h3>CharacterAI Telegram bot</h3>
 		</div>
 	</body>
