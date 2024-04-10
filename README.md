@@ -5,7 +5,7 @@
 
 ## About 
 
-With this Telegram bot you can talk to CharacterAI characters. It's self hosted.
+A Telegram bot that can be used to talk with CharacterAI characters. It's self hosted.
 
 ## Warning
 
