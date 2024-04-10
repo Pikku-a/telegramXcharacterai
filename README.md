@@ -68,9 +68,8 @@ Don't share the access code to anyone.
 
 I also built this on top of this [javascript-chatbot](https://github.com/devXprite/javascript-chatbot) by
 DevXprite - 2022, Licensed MIT.
-However, the project has changed a lot and there is not much code left from that.
 
-But some stuff is left. Like the Vercel stuff. For example, there is this button in this readme:
+However, the project has changed a lot and there is not much code left from that. But some stuff is left. Like the Vercel stuff. For example, there is this button in this readme:
 
 *Click this button to configure your Project and deploy it to Vercel.*
   
