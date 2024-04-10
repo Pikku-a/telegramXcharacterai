@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:100px;height:auto;">
+    <img src="telegramxcharacterai-logo.png" style="border-radius:50%;width:200px;height:auto;overflow: hidden;">
     <h3>CharacterAI Telegram bot</h3>
 </div>
 
@@ -12,7 +12,6 @@ With this Telegram bot you can talk to CharacterAI characters. It's self hosted.
 This is unnofficial, so there is a slight possibility that your CharacterAI account gets banned if you use this.
 
 ## To do
-- Improve this readme
 - Make it possible to login and choose the character using the bot
 - Fix webhooks stuff
 
