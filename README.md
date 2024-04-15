@@ -15,6 +15,7 @@ This is unnofficial, so there is a slight possibility that your CharacterAI acco
 **To do**
 - Make it possible to login and choose the character using the bot
 - Fix webhooks stuff
+- Cosider changing puppeteer from chromium to firefox
 
 **Helpful links:**
 - https://www.npmjs.com/package/node_characterai

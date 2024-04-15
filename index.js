@@ -1,11 +1,4 @@
 /* eslint-disable max-len */
-const fs = require("fs");
-const _ = require("lodash");
-const { lowerCase } = require("lower-case");
-const { capitalCase } = require("change-case");
-const extractValues = require("extract-values");
-const stringSimilarity = require("string-similarity");
-const { upperCaseFirst } = require("upper-case-first");
 
 const cors = require("cors");
 const path = require("path");
@@ -15,16 +8,8 @@ const dotenv = require("dotenv");
 const express = require("express");
 const compression = require("compression");
 const serveStatic = require("serve-static");
-// Not sure if all of the above is necessary
-
-//const pkg = require("./package.json");
 
 dotenv.config();
-
-/*const botName = process.env.BOT_NAME;// || pkg.name;
-const developerName = process.env.DEVELOPER_NAME;// || pkg.author.name;
-const developerEmail = process.env.DEVELOPER_EMAIL;// || pkg.author.email;
-const bugReportUrl = process.env.BUG_REPORT_URL;// || pkg.bugs.url;*/
 
 // LOCALSTORAGE
 if (typeof localStorage === "undefined" || localStorage === null) {
@@ -84,7 +69,7 @@ bot.on("message:text", async (ctx) => {
   
   try {
 	let query = decodeURIComponent(messageText).replace(/\s+/g, " ").trim() || "Hello";
-	const humanInput = lowerCase(query.replace(/(\?|\.|!)$/gim, ""));
+	//const humanInput = lowerCase(query.replace(/(\?|\.|!)$/gim, "")); // Remove this?
 	//console.log("query: "+query);
 	// HISTORY
 	let historyEnabled = false;
@@ -137,15 +122,6 @@ bot.on("message:text", async (ctx) => {
 		reply_to_message_id: ctx.msg.message_id,
 	});
 	console.log("Response message sent.");
-
-	/*	if (action != "wikipedia") {
-		  responseText = responseText
-			.replace(/(\[BOT_NAME\])/g, botName)
-			.replace(/(\[DEVELOPER_NAME\])/g, developerName)
-			.replace(/(\[DEVELOPER_EMAIL\])/g, developerEmail)
-			.replace(/(\[BUG_URL\])/g, bugReportUrl);
-		}
-	}*/
 	
 	/*res.json({
 	  responseText,
@@ -183,7 +159,7 @@ bot.catch((err) => {
 });
 
 
-// IF USING WEBHOOKS - Couldn't get this working
+// IF USING WEBHOOKS - (Couldn't get this working)
 // Register a handler for the bot
 //app.post("/webhook", webhookCallback(bot, 'express'));
 
