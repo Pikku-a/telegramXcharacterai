@@ -15,7 +15,6 @@ This is unnofficial, so there is a slight possibility that your CharacterAI acco
 **To do**
 - Make it possible to login and choose the character using the bot
 - Fix webhooks stuff
-- Cosider changing puppeteer from chromium to firefox
 
 **Helpful links:**
 - https://www.npmjs.com/package/node_characterai
@@ -47,6 +46,7 @@ To get a local copy up and running follow these simple steps.
    TELEGRAM_TOKEN="telegram bot token from @botfather"
    CHARACTERAI_ID="character ai id that you can get from the last part of the url when in the chat"
    CHARACTERAI_ACCESSTOKEN="See: How to find characterAI access token"
+    WEBHOOKS="Doesn't work currently so ignore it"
    ```
 4. Start Server
    ```sh
