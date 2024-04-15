@@ -34,24 +34,24 @@ To get a local copy up and running follow these simple steps.
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/Pikku-a/telegramXcharacterai
-   ```
+    ```sh
+    git clone https://github.com/Pikku-a/telegramXcharacterai
+    ```
 2. Install NPM packages
-   ```sh
-   npm install
-   ```
+    ```sh
+    npm install
+    ```
 3. Rename `example.env` to `.env` and edit it:
-   ```sh 
-   TELEGRAM_TOKEN="telegram bot token from @botfather"
-   CHARACTERAI_ID="character ai id that you can get from the last part of the url when in the chat"
-   CHARACTERAI_ACCESSTOKEN="See: How to find characterAI access token"
+    ```sh 
+    TELEGRAM_TOKEN="telegram bot token from @botfather"
+    CHARACTERAI_ID="character ai id that you can get from the last part of the url when in the chat"
+    CHARACTERAI_ACCESSTOKEN="See: How to find characterAI access token"
     WEBHOOKS="Doesn't work currently so ignore it"
-   ```
+    ```
 4. Start Server
-   ```sh
-   npm start
-   ```
+    ```sh
+    npm start
+    ```
 
 **How to find CharacterAI access token**
 
