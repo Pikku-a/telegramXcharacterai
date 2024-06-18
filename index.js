@@ -51,7 +51,7 @@ const bot = new Bot(process.env.TELEGRAM_TOKEN);
 });*/
 
 // Greeting
-bot.command("start", (ctx) => ctx.reply("Hei"));
+bot.command("start", (ctx) => ctx.reply("Hii"));
 
 // Register listeners to handle messages
 //bot.on("message:text", (ctx) => ctx.reply("Echo: " + ctx.message.text));
@@ -103,6 +103,9 @@ bot.on("message:text", async (ctx) => {
 		}
 		console.log("query: "+queryWithHistory);
 	}
+
+    // Send typing indicator
+    await ctx.replyWithChatAction('typing');
 	
 	const chat = await characterAI.createOrContinueChat(characterId);
 	const response = await chat.sendAndAwaitResponse(query, true); //or queryWithHistory
@@ -158,7 +161,6 @@ bot.catch((err) => {
   }
 });
 
-
 // IF USING WEBHOOKS - (Couldn't get this working)
 // Register a handler for the bot
 //app.post("/webhook", webhookCallback(bot, 'express'));
@@ -172,5 +174,14 @@ bot.catch((err) => {
 // Set webhook for handler in Bot API
 //bot.api.setWebhook(process.env.WEBHOOK);
 
+const server = app.listen(port, () => console.log(`app listening on port ${port}!`));
 
-app.listen(port, () => console.log(`app listening on port ${port}!`));
+// Handle server errors
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${port} is already in use. Please choose a different port.`);
+    process.exit(1);
+  } else {
+    console.error(err);
+  }
+});
