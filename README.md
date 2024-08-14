@@ -62,6 +62,8 @@ To get a local copy up and running follow these simple steps.
 - Open the object, right click on value and copy your session token.
 Don't share the access code to anyone.
 
+In the new version it's more difficult to find: Go to network tab, try to click any of the AI character, then find anything that says plus.character.ai and you'll find the token in the request authorization header.
+
 ## Credit
 
 I built this on top of this [javascript-chatbot](https://github.com/devXprite/javascript-chatbot) by

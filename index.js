@@ -104,6 +104,9 @@ bot.on("message:text", async (ctx) => {
 		console.log("query: "+queryWithHistory);
 	}
 	
+	// Send typing indicator
+  await ctx.replyWithChatAction('typing');
+
 	const chat = await characterAI.createOrContinueChat(characterId);
 	const response = await chat.sendAndAwaitResponse(query, true); //or queryWithHistory
 	
@@ -173,4 +176,15 @@ bot.catch((err) => {
 //bot.api.setWebhook(process.env.WEBHOOK);
 
 
-app.listen(port, () => console.log(`app listening on port ${port}!`));
+//app.listen(port, () => console.log(`app listening on port ${port}!`));
+const server = app.listen(port, () => console.log(`app listening on port ${port}!`));
+
+// Handle server errors
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${port} is already in use. Please choose a different port.`);
+    process.exit(1);
+  } else {
+    console.error(err);
+  }
+});
