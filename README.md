@@ -9,7 +9,7 @@ A Telegram bot that can be used to talk with CharacterAI characters. It's self h
 
 ## Warning
 
-This is unnofficial, so there is a slight possibility that your CharacterAI account gets banned if you use this.
+This is unnofficial, so there might be a possibility that your CharacterAI account gets banned if you use this.
 
 ## Notes
 **To do**
@@ -69,12 +69,4 @@ In the new version it's more difficult to find: Go to network tab, try to click 
 I built this on top of this [javascript-chatbot](https://github.com/devXprite/javascript-chatbot) by
 DevXprite - 2022, Licensed MIT.
 
-However, the project has changed a lot and there is not much code left from that. But some stuff is left. Like the Vercel stuff. For example, there is this button in this readme:
-
-*Click this button to configure your Project and deploy it to Vercel.*
-  
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FdevXprite%2Fjavascript-chatbot)
-
-I don't know what it does. I haven't tried clicking on it, my courage was not enough. Legend says that people who have clicked on it have never returned. Did they succeed? Or fail? Or something worse...
-
-
+However, the project has changed a lot and there is not much code left from that.
