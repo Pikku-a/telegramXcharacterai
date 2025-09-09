@@ -11,6 +11,8 @@ A Telegram bot that can be used to talk with CharacterAI characters. It's self h
 
 I don't use Telegram or CharacterAI anymore, so I can't test if this still works. It worked last time I tried.
 
+I started working on a similar XMPP bot, but it's unfinished. Check it out if you want to continue it: https://codeberg.org/pikku-a/xmpp-ai-bot
+
 ## Warning
 
 This is unnofficial, so there might be a possibility that your CharacterAI account gets banned if you use this. Probably won't happen, but who knows.
