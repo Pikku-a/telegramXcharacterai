@@ -7,9 +7,13 @@
 
 A Telegram bot that can be used to talk with CharacterAI characters. It's self hosted.
 
+## State of project
+
+I don't use Telegram or CharacterAI anymore, so I can't test if this still works. It worked last time I tried.
+
 ## Warning
 
-This is unnofficial, so there might be a possibility that your CharacterAI account gets banned if you use this.
+This is unnofficial, so there might be a possibility that your CharacterAI account gets banned if you use this. Probably won't happen, but who knows.
 
 ## Notes
 **To do**
